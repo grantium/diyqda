@@ -3,27 +3,28 @@ Helps turn a folder of wikilink-coded plaintext files into a structured data cor
 
 ## How I came to this project
 
-While analyzing a body of text files in the software app Obsidian, I fell into a pattern of collecting documents that were essentially this:
+While analyzing a body of text files, I fell into a pattern of collecting documents that were essentially this:
 
 ```
+--- (yaml header)
+key: value
+key: valye
 ---
-yaml header
----
-body text paragraph
+body text paragraph [[wikilink]] [[wikilink]]
 
-more body text
+more body text [[wikilink]] [[wikilink]] [[wikilink]]
 ```
 
-I'm analyzing media for a project, but many datasets may look like this. My yaml headers look like `author: "First, Last:` and `date: April 13, 2016`. They are individual lines at the start of the document separated by three hyphens: `---`. It also has a bunch of wikilinks in the text.
+I need to keep all them separate, and count where they are in the document. That's what this does, but only at the paragraph level - I'm not splitting sentences or paragraphs, so this is more of a rapid-workflow kind of solution. I plan to use it in the design stages of creative projects and maybe project reflection.
+
+I'm sharing to hopefully saves someone a moment or two, or in my case being new to R, quite a bit of time. 
 
 This script reads a folder of markdown files and gives you a structured dataset that includes:
 - full-text corpus with file and paragraph references
 - a metadata table containing your yaml headers
 
-only cares about YAML in the header, text, paragraphs and wikilinks.
-
- into R and captures the above items.
-
+ into R and captures the above items into a list of 3 tibbles. I use Tidyverse for much of it, and this is not a complete solution. But if you want to use Quanteda on your Obsidian vault or throw together some quick visualizations, this might get you partway there!
+ 
 ### Here's the type of file I designed it for.
 
 ```
@@ -95,3 +96,8 @@ If you just want to write these to a file and open them in a spreadsheet, you ca
 ```
 > write_csv(my_metadata,'metadata.csv')
 ```
+## Related Resources
+
+ - [Quoth plugin](https://github.com/erykwalder/quoth)
+ - pseudometa linked to [this solution they cooked up](https://gist.github.com/chrisgrieser/80581254be5d7f3bc830d2d7c6cd980c) for their current analysis from the Obsidian Discord
+ - [An Integrated Qualitative Analysis Environment with Obsidian](https://axle.design/an-integrated-qualitative-analysis-environment-with-obsidian) - has a sample Obsidian environment for this type of work environment
