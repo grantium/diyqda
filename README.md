@@ -1,5 +1,5 @@
 # diyqda
-Helps turn a folder of wikilink-coded plaintext files into astructured data corpus.
+Helps turn a folder of wikilink-coded plaintext files into a structured data corpus.
 
 ## How I came to this project
 
@@ -51,7 +51,7 @@ The main part is a function. I'm working on turning this into a library and I wi
 This relies on `tidyverse` and `r-yaml` so load those libraries first.
 
 ```
-library(tidyverse,yaml)
+> library(tidyverse,yaml)
 ```
 
 Call it by assigning it to a variable and passing it your folder of markdown files.
@@ -80,19 +80,18 @@ List of 3
   ..$ paragraph: int [1:5] 1 1 1 1 2
   ..$ text     : chr [1:5] "There are 115 members of the Supreme Court. Supreme Court judges are nominated by the President of Russia and a"| __truncated__ "There are 115 members of the Supreme Court. Supreme Court judges are nominated by the President of Russia and a"| __truncated__ "According to Clark, it wasn’t merely the overall political climate that pushed him to write “This Land,” it was"| __truncated__ "According to Clark, it wasn’t merely the overall political climate that pushed him to write “This Land,” it was"| __truncated__ ...
   ..$ codes    : chr [1:5] "russian_supreme_court" "government_administrative_structure" "topic_songwriting" "people_gary_clark_jr" ...
-  ```
-**The funtion returns a list of three items.** What information is duplicated is done so for convenience. `file_n` in each table can serve as an index.
+```
 
-**$text contains** the file name, a paragraph ID and textual content of the paragraph, and this repeats until the file is over. The YAML headers are processed with [viking's r-yaml package](https://github.com/viking/r-yaml). Rather than discarding the YAML header, I keep it but start the paragraph index _after_ the header is over. My intention is to let one one perform code distribution in paragraphs with an accurate count, but still refer to the header if you need it.
+**The function returns a list of three items.** What information is duplicated is done so for convenience. Of the three, text is the most duplicative and if you didn't save it you wouldn't lose anything. `file_n` in each table is the index.
 
-To assign the text table to a variable use `my_text <- p$text`.
+**$text contains** the file name, a paragraph ID and textual content of the paragraph, and this repeats until the file is over. The YAML headers are processed with [viking's r-yaml package](https://github.com/viking/r-yaml). I retain the YAML header in `text` and `code_list' but start the paragraph ID at 0 at the 2nd three-hyphen YAML line. The idea here is to be nondestructive with the loaded file while allowing for an accurate paragraph index in content analysis. To assign the text table to a variable use `my_text <- p$text`.
+
 **$metadata** contains example data above - but in yours it should be your yaml. I have only tested it with simple key-value pairs, but the standard is finicky so your mileage may vary. To your metadata, I add paragraph count (minus header) and file_n for linking to other tables. To assign the metadata to a variable, just use `my_metadata <- p$metadata`.
 
-**$code_list is** largely the same as $text, but contains an additional column with wikilinks separated by paragraph. It separates this in a way that I think is tidy, but doesn't feel right - feel free to submit an issue here if you have an idea for another layout, I might be interested. To copy the code_list to your variable, use `my_codes <- p$code_list`.
+**$code_list is** largely the same as `$text`, but contains an additional column with wikilinks separated by paragraph. It separates this in a way that I think is tidy, but doesn't feel right - feel free to submit an issue here if you have an idea for another layout, I might be interested. To copy `code_list` to a variable, use `my_codes <- p$code_list`.
 
-If you just want to write these to a file and open them in a spreadsheet, you can write one of the variables you made above using `write_csv` from Tidyverse.
+If you just want to write these to a file and open them in a spreadsheet, you can write one of the variables you made above using `write_csv` from Tidyverse. We already loaded that earlier, so we can just run the command.
 
-Like so.
 ```
-write_csv(my_metadata,'metadata.csv')
+> write_csv(my_metadata,'metadata.csv')
 ```
