@@ -48,13 +48,20 @@ If you are doing qualitative analysis, know that this is paragraph-level coding.
 
 The main part is a function. I'm working on turning this into a library and I will include library instructions when I do.
 
-Call it by assigning it to a variable and passing it your folder of markdown files.
+This relies on `tidyverse` and `r-yaml` so load those libraries first.
 
 ```
 library(tidyverse,yaml)
+```
+
+Call it by assigning it to a variable and passing it your folder of markdown files.
+
+```
 > p <- read_md_files('~/your_folder_here/')
 ```
+
 Once it's done, let's examine `p` with `str()`.
+
 ```
 > str(p)
 List of 3
