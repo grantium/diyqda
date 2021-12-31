@@ -49,6 +49,16 @@ If you are doing qualitative analysis, know that this is paragraph-level coding.
 
 The main part is a function. I'm working on turning this into a library and I will include library instructions when I do.
 
+I think you can install it right from github if you have devtools loaded.
+
+```
+library("devtools")
+```
+
+```
+install_github("grantium/diyqda")
+```
+
 This relies on `tidyverse` and `r-yaml` so load those libraries first.
 
 ```
