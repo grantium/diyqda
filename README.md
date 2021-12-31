@@ -59,12 +59,6 @@ library("devtools")
 install_github("grantium/diyqda")
 ```
 
-This relies on `tidyverse` and `r-yaml` so load those libraries first.
-
-```
-> library(tidyverse,yaml)
-```
-
 Call it by assigning it to a variable and passing it your folder of markdown files.
 
 ```
