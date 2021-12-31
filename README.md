@@ -40,7 +40,7 @@ Ironically, “This Land” isn’t necessarily a harbinger for the rest of _Thi
 
 Incidentally, this script works nicely with [Ryan J.A. Murphy's blog post](https://axle.design/an-integrated-qualitative-analysis-environment-with-obsidian). 
 
-This can't replace expensive QDA software, but it can bootstrap a similar and swift workflow for knowledge generation.
+This can't replace expensive QDA software, but it can bootstrap a swift workflow for manually processing huge set of files in my quick qualitative analysis project.
 
 If you are doing qualitative analysis, know that this is paragraph-level coding. You can't split paragraphs or codes inbetween words - it's only matching codes to paragraphs.
 
@@ -54,8 +54,7 @@ Call it by assigning it to a variable and passing it your folder of markdown fil
 library(tidyverse,yaml)
 > p <- read_md_files('~/your_folder_here/')
 ```
-
-When we look at the structure of `p` we see:
+Once it's done, let's examine `p` with `str()`.
 ```
 > str(p)
 List of 3
@@ -77,18 +76,16 @@ List of 3
   ```
 **The funtion returns a list of three items.** What information is duplicated is done so for convenience. `file_n` in each table can serve as an index.
 
-$text contains the file name, a paragraph ID and textual content of the paragraph, and this repeats until the file is over. The YAML headers are processed with [viking's r-yaml package](https://github.com/viking/r-yaml). Rather than discarding that information, I start the paragraph index after the header is over. This lets you perform text analysis content distribution in paragraphs with an accurate count, but still refer to the header if you need it.
-
-$code_list is largely the same as $text, but contains an additional column with wikilinks separated by paragraph.
-
-To assign the metadata to a variable, just use `my_metadata <- p$metadata`.
+**$text contains** the file name, a paragraph ID and textual content of the paragraph, and this repeats until the file is over. The YAML headers are processed with [viking's r-yaml package](https://github.com/viking/r-yaml). Rather than discarding the YAML header, I keep it but start the paragraph index _after_ the header is over. My intention is to let one one perform code distribution in paragraphs with an accurate count, but still refer to the header if you need it.
 
 To assign the text table to a variable use `my_text <- p$text`.
+**$metadata** contains example data above - but in yours it should be your yaml. I have only tested it with simple key-value pairs, but the standard is finicky so your mileage may vary. To your metadata, I add paragraph count (minus header) and file_n for linking to other tables. To assign the metadata to a variable, just use `my_metadata <- p$metadata`.
 
-And finally, the code list: `my_codes <- p$code_list`.
+**$code_list is** largely the same as $text, but contains an additional column with wikilinks separated by paragraph. It separates this in a way that I think is tidy, but doesn't feel right - feel free to submit an issue here if you have an idea for another layout, I might be interested. To copy the code_list to your variable, use `my_codes <- p$code_list`.
 
 If you just want to write these to a file and open them in a spreadsheet, you can write one of the variables you made above using `write_csv` from Tidyverse.
-  
+
+Like so.
 ```
 write_csv(my_metadata,'metadata.csv')
 ```
