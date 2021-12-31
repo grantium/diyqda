@@ -98,6 +98,6 @@ If you just want to write these to a file and open them in a spreadsheet, you ca
 ```
 ## Related Resources
 
+ - [An Integrated Qualitative Analysis Environment with Obsidian](https://axle.design/an-integrated-qualitative-analysis-environment-with-obsidian) - has a sample Obsidian environment for this type of work environment and I borrowed the date-plugin trick, but I'm a novice at Javascript so I got stuck on Dataview
  - [Quoth plugin](https://github.com/erykwalder/quoth)
  - pseudometa linked to [this solution they cooked up](https://gist.github.com/chrisgrieser/80581254be5d7f3bc830d2d7c6cd980c) for their current analysis from the Obsidian Discord
- - [An Integrated Qualitative Analysis Environment with Obsidian](https://axle.design/an-integrated-qualitative-analysis-environment-with-obsidian) - has a sample Obsidian environment for this type of work environment
