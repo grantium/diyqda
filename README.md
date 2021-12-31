@@ -1,5 +1,5 @@
 # diyqda
-Helps turn a folder of wikilink-coded plaintext files into structured data corpus.
+Helps turn a folder of wikilink-coded plaintext files into astructured data corpus.
 
 ## How I came to this project
 
@@ -24,7 +24,7 @@ only cares about YAML in the header, text, paragraphs and wikilinks.
 
  into R and captures the above items.
 
-Here's the type of file I designed it for.
+### Here's the type of file I designed it for.
 
 ```
 ---
@@ -44,7 +44,11 @@ This can't replace expensive QDA software, but it can bootstrap a similar and sw
 
 If you are doing qualitative analysis, know that this is paragraph-level coding. You can't split paragraphs or codes inbetween words - it's only matching codes to paragraphs.
 
-Here's how it works.
+## Here's how it works.
+
+The main part is a function. I'm working on turning this into a library and I will include library instructions when I do.
+
+Call it by assigning it to a variable and passing it your folder of markdown files.
 
 ```
 library(tidyverse,yaml)
