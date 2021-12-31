@@ -95,7 +95,11 @@ List of 3
 
 **$code_list is** largely the same as `$text`, but contains an additional column with the wikilink text (no brackets) unrolled by paragraph and by code. It separates this in a way that I think is tidy, but doesn't feel right - feel free to submit an issue here if you have an idea for another layout, I might be interested. To copy `code_list` to a variable, use `my_codes <- p$code_list`.
 
-If you just want to write these to a file and open them in a spreadsheet, you can write one of the variables you made above using `write_csv` from Tidyverse. We already loaded that earlier, so we can just run the command.
+If you just want to write these to a file and open them in a spreadsheet, you can write one of the variables you made above using `write_csv` from Tidyverse. You can load that and write the file like this.
+
+```
+> library(tidyverse)
+```
 
 ```
 > write_csv(my_metadata,'metadata.csv')
