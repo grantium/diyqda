@@ -46,9 +46,12 @@ If you are doing qualitative analysis, know that this is paragraph-level coding.
 
 Here's how it works.
 
-`> p <- read_md_files('~/your_folder_here/')
+```
+library(tidyverse,yaml)
+> p <- read_md_files('~/your_folder_here/')
+```
 
-When we inspect `p` we see:
+When we look at the structure of `p` we see:
 ```
 > str(p)
 List of 3
@@ -57,14 +60,31 @@ List of 3
   ..$ source  : chr [1:3] "Wikipedia" "Pitchfork" "Wikipedia"
   ..$ rating  : int [1:3] 2 5 3
   ..$ file_n  : chr [1:3] "0001" "0002" "0003"
-  ..$ para_len: num [1:3] 4 2 4
- $ text     :'data.frame':	25 obs. of  3 variables:
+  ..$ para_len: int [1:3] 4 2 4
+ $ text     : tibble [25 × 3] (S3: tbl_df/tbl/data.frame)
   ..$ file_n   : chr [1:25] "0001" "0001" "0001" "0001" ...
-  ..$ paragraph: num [1:25] -4 -3 -2 -1 0 1 2 3 4 -4 ...
+  ..$ paragraph: int [1:25] -4 -3 -2 -1 0 1 2 3 4 -4 ...
   ..$ text     : chr [1:25] "---" "title: Supreme Court of Russia" "source: Wikipedia" "rating: 2" ...
  $ code_list: tibble [5 × 4] (S3: tbl_df/tbl/data.frame)
   ..$ file_n   : chr [1:5] "0001" "0001" "0002" "0002" ...
-  ..$ paragraph: num [1:5] 1 1 1 1 2
+  ..$ paragraph: int [1:5] 1 1 1 1 2
   ..$ text     : chr [1:5] "There are 115 members of the Supreme Court. Supreme Court judges are nominated by the President of Russia and a"| __truncated__ "There are 115 members of the Supreme Court. Supreme Court judges are nominated by the President of Russia and a"| __truncated__ "According to Clark, it wasn’t merely the overall political climate that pushed him to write “This Land,” it was"| __truncated__ "According to Clark, it wasn’t merely the overall political climate that pushed him to write “This Land,” it was"| __truncated__ ...
   ..$ codes    : chr [1:5] "russian_supreme_court" "government_administrative_structure" "topic_songwriting" "people_gary_clark_jr" ...
   ```
+**The funtion returns a list of three items.** What information is duplicated is done so for convenience. `file_n` in each table can serve as an index.
+
+$text contains the file name, a paragraph ID and textual content of the paragraph, and this repeats until the file is over. The YAML headers are processed with [viking's r-yaml package](https://github.com/viking/r-yaml). Rather than discarding that information, I start the paragraph index after the header is over. This lets you perform text analysis content distribution in paragraphs with an accurate count, but still refer to the header if you need it.
+
+$code_list is largely the same as $text, but contains an additional column with wikilinks separated by paragraph.
+
+To assign the metadata to a variable, just use `my_metadata <- p$metadata`.
+
+To assign the text table to a variable use `my_text <- p$text`.
+
+And finally, the code list: `my_codes <- p$code_list`.
+
+If you just want to write these to a file and open them in a spreadsheet, you can write one of the variables you made above using `write_csv` from Tidyverse.
+  
+```
+write_csv(my_metadata,'metadata.csv')
+```
