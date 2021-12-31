@@ -89,7 +89,7 @@ List of 3
 
 **$metadata** contains example data above - but in yours it should be your yaml. I have only tested it with simple key-value pairs, but the standard is finicky so your mileage may vary. To your metadata, I add paragraph count (minus header) and file_n for linking to other tables. To assign the metadata to a variable, just use `my_metadata <- p$metadata`.
 
-**$code_list is** largely the same as `$text`, but contains an additional column with wikilinks separated by paragraph. It separates this in a way that I think is tidy, but doesn't feel right - feel free to submit an issue here if you have an idea for another layout, I might be interested. To copy `code_list` to a variable, use `my_codes <- p$code_list`.
+**$code_list is** largely the same as `$text`, but contains an additional column with the wikilink text (no brackets) unrolled by paragraph and by code. It separates this in a way that I think is tidy, but doesn't feel right - feel free to submit an issue here if you have an idea for another layout, I might be interested. To copy `code_list` to a variable, use `my_codes <- p$code_list`.
 
 If you just want to write these to a file and open them in a spreadsheet, you can write one of the variables you made above using `write_csv` from Tidyverse. We already loaded that earlier, so we can just run the command.
 
