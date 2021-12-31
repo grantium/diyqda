@@ -39,7 +39,7 @@ According to Clark, it wasn’t merely the overall political climate that pushed
 Ironically, “This Land” isn’t necessarily a harbinger for the rest of _This Land_, the Texas bluesman’s third studio album. Apart from “Feed the Babies,” which offers a vague plea for growth and understanding, there isn’t another song that directly confronts a societal woe, nor is there much anger flowing through its other 15 songs. What “This Land” does indicate is how Clark no longer feels restricted by the confining dictates of modern blues. [[genre_blues]]
 ```
 
-Incidentally, this script works nicely with [Ryan J.A. Murphy's blog post](https://axle.design/an-integrated-qualitative-analysis-environment-with-obsidian). 
+Incidentally, this script works nicely with [Ryan J.A. Murphy's blog post](https://axle.design/an-integrated-qualitative-analysis-environment-with-obsidian) because I read and used parts of his process for mine.
 
 This can't replace expensive QDA software, but it can bootstrap a swift workflow for manually processing huge set of files in my quick qualitative analysis project.
 
