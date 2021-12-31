@@ -34,7 +34,6 @@ I am developing a process that is informed by [grounded field theory](https://en
 
 This is paragraph-level coding. So take the example from above, but say I'm tagging and writing about [[topic_report_release]] under that code/page, and same with ``[[dc]]`` for news about the district, and then ```[[another_tag]]``` just for kicks.
 
-The idea is to go from this,
 ```
 ---
 headline: "Giant news happened"
@@ -47,10 +46,10 @@ WASHINGTON–Today, reports were released.[[topic_report_release]] [[dc]]
 
 A second paragraph of news content that say something about Washington, and maybe more follow.[[another tag]] [[dc]]
 ```
-to this:
+What this does is turn a folder full of markdown notes like that and make turn it into structured data like this. 
 | File | Paragraph | Headline              | Outlet                  | Author                  | Date         | Text                                                       | Codes                            |
 |------|-----------|-----------------------|-------------------------|-------------------------|--------------|------------------------------------------------------------|----------------------------------|
 | 1    | 1         | "Giant news happened" | "Targeted News Service" | "Targeted News Service" | June 6, 2016 | WASHINGTON–Today, reports were released.                   | [[topic_report_release]], [[dc]] |
 | 1    | 2         | "Giant news happened" | "Targeted News Service" | "Targeted News Service" | June 6, 2016 | A second paragraph of news content, and maybe more follow. | [[another tag]], [[dc]]          |
 
-Nothing more for now, feel free to branch.
+My needs will develop over time but I can't promise this package will - but if you need it to shape data connect to 
