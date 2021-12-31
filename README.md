@@ -24,10 +24,33 @@ author: "Targeted News Service"
 date: June 6, 2016
 ---
 
-WASHINGTON–Today, reports were released.
+WASHINGTON–Today, reports were released. 
+
+A second paragraph of news content, and maybe more follow.
 ```
 
 
 I am developing a process that is informed by [grounded field theory](https://en.wikipedia.org/wiki/Grounded_theory), but in the end will be represented in large part by whiz-bang visuals. I need to get the aggregates data into R nicely. My process works nicely with [Ryan J.A. Murphy's blog post](https://axle.design/an-integrated-qualitative-analysis-environment-with-obsidian) if you are using that as a foundation for qualitative data analyis. 
 
-This is paragraph-level coding. I'm working on my portfolio, and that is enough for me. Feel free to branch it if you need it!
+This is paragraph-level coding. So take the example from above, but say I'm tagging and writing about [[topic_report_release]] under that code/page, and same with ``[[dc]]`` for news about the district, and then ```[[another_tag]]``` just for kicks.
+
+The idea is to go from this,
+```
+---
+headline: "Giant news happened"
+outlet: "Targeted News Service"
+author: "Targeted News Service"
+date: June 6, 2016
+---
+
+WASHINGTON–Today, reports were released.[[topic_report_release]] [[dc]]
+
+A second paragraph of news content that say something about Washington, and maybe more follow.[[another tag]] [[dc]]
+```
+to this:
+| File | Paragraph | Headline              | Outlet                  | Author                  | Date         | Text                                                       | Codes                            |
+|------|-----------|-----------------------|-------------------------|-------------------------|--------------|------------------------------------------------------------|----------------------------------|
+| 1    | 1         | "Giant news happened" | "Targeted News Service" | "Targeted News Service" | June 6, 2016 | WASHINGTON–Today, reports were released.                   | [[topic_report_release]], [[dc]] |
+| 1    | 2         | "Giant news happened" | "Targeted News Service" | "Targeted News Service" | June 6, 2016 | A second paragraph of news content, and maybe more follow. | [[another tag]], [[dc]]          |
+
+Nothing more for now, feel free to branch.
