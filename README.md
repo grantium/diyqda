@@ -3,7 +3,7 @@ Helps turn a folder of wikilink-coded plaintext files into a structured data cor
 
 ## How I came to this project
 
-While analyzing a body of text files, I fell into a pattern of collecting documents that were essentially this:
+While analyzing a body of text files, I fell into a pattern of collecting documents that were basically this:
 
 ```
 --- (yaml header)
