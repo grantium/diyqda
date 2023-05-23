@@ -1,4 +1,4 @@
-read_md_files <- function(md_dir) {
+read_md_files <- function(md_dir) { 
   mk_links_regex <- "(\\[\\[.+?\\]\\])" # regex for extracting [[wikilinks]]
   file_list <- list.files(path=md_dir, pattern="*.md") # obtain file list in folder md_dir
   texts <- data.frame(file_n=character(),
